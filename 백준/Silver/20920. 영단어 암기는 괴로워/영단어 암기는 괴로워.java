@@ -47,17 +47,24 @@ public class Main {
                 }
             }
         }
-        List<Word> list = new ArrayList<>();
+        TreeSet<Word> set = new TreeSet<>();
+//        List<Word> list = new ArrayList<>();
         Iterator<String> iter = map.keySet().iterator();
         while (iter.hasNext()){
             String key = iter.next();
             Integer value = map.get(key);
-            list.add(new Word(key, key.length(), value));
+//            list.add(new Word(key, key.length(), value));
+            set.add(new Word(key, key.length(), value));
         }
-        Collections.sort(list);
-        for (Word word: list) {
+        Iterator<Word> iterWord = set.iterator();
+        while (iterWord.hasNext()){
+            Word word = iterWord.next();
             sb.append(word.word).append("\n");
         }
+//        Collections.sort(list);
+//        for (Word word: list) {
+//            sb.append(word.word).append("\n");
+//        }
         System.out.println(sb);
     }
 }
