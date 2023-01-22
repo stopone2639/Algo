@@ -1,35 +1,36 @@
-
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
-
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
-		int K = sc.nextInt();
-		Queue<Integer> qu1 = new LinkedList<>(); //N 숫자 담을 곳 
-		Queue<Integer> qu2 = new LinkedList<>(); // 요세푸스 담을곳
-		for (int i = 1; i <= N; i++) { //큐에 N을 담음
-			qu1.add(i);
-		}
-		int cnt = 1;
-		while(!qu1.isEmpty()) {
-			if(cnt == K) {
-				qu2.add(qu1.poll());
-				cnt = 1;
-			} else {
-				qu1.add(qu1.poll());
-				cnt++;
-			}
-		}
-		System.out.print("<");
-		for (int i = 0; i < N - 1; i++) {
-			System.out.printf("%d, ", qu2.poll());
-		}
-		System.out.printf("%d", qu2.poll());
-		System.out.print(">");
-	}
-
+    public static void main(String[] args) throws Exception{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
+        Queue<Integer> queue = new LinkedList<>();
+        int[] arr = new int[N];
+        for(int i =1; i <= N; i++){
+            queue.offer(i);
+        }
+        int sum = 1;
+        sb.append("<");
+        while (true){
+            if(queue.isEmpty()){
+                break;
+            }
+            if(sum%K == 0){
+                sb.append(queue.poll()).append(", ");
+            } else{
+                queue.offer(queue.poll());
+            }
+            sum++;
+        }
+        sb.deleteCharAt(sb.length() - 1);
+        sb.deleteCharAt(sb.length() - 1);
+        sb.append(">");
+        System.out.println(sb);
+    }
 }
