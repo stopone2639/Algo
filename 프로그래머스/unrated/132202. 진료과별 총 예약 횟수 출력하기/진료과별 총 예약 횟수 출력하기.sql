@@ -1,7 +1,6 @@
 -- 코드를 입력하세요
-SELECT *
-FROM (SELECT MCDP_CD as 진료과코드, COUNT(*) as 5월예약건수
+SELECT MCDP_CD as 진료과코드, COUNT(*) as 5월예약건수
 FROM APPOINTMENT
 WHERE APNT_YMD LIKE '2022-05%' 
-GROUP BY MCDP_CD) t
-ORDER BY t.5월예약건수, t.진료과코드
+GROUP BY MCDP_CD
+ORDER BY 5월예약건수, 진료과코드
