@@ -3,8 +3,8 @@ import java.io.InputStreamReader;
 
 /**
  * 2차원 배열 구간합 구하기
- * 1행과 1열의 구간합을 먼저 구하고 나머지 구간합은 D[i][j] = D[i-1][j] + D[i-1][j-1] + D[i][j-1]
- * X1 Y1부터 X2 Y2까지 구간합은 D[X2][Y2] - D[X1- 1][Y2] - D[X2][Y1-1] - D[X1-1][Y1-1]
+ * 1행과 1열의 구간합을 먼저 구하고 나머지 구간합은 D[i][j] = D[i-1][j] + D[i][j-1] - D[i-1][j-1] + arr[i][j]
+ * X1 Y1부터 X2 Y2까지 구간합은 D[X2][Y2] - D[X1- 1][Y2] - D[X2][Y1-1] + D[X1-1][Y1-1]
  */
 public class Main {
     public static void main(String[] args) throws Exception{
