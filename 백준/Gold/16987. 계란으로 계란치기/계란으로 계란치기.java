@@ -28,16 +28,16 @@ public class Main {
             DFS(r+1, cnt);
             return;
         }
-        int nCnt = cnt;
+
         for(int i = 0; i < N; i++){
+            int breakCnt = 0;
             if(i==r) continue;
             if(dura[i] <= 0) continue;
             breakEgg(r, i);
-            if(dura[r] <= 0) cnt++;
-            if(dura[i] <= 0) cnt++;
-            DFS(r + 1, cnt);
+            if(dura[r] <= 0) breakCnt++;
+            if(dura[i] <= 0) breakCnt++;
+            DFS(r + 1, cnt + breakCnt);
             resetEgg(r, i);
-            cnt = nCnt;
         }
     }
     public static void resetEgg(int index1, int index2){
